@@ -46,8 +46,9 @@ rescue FlickRaw::FailedResponse
 end
 
 #...get matches
-list = flickr.photos.search(:tags =>username, :per_page => '10')
-#TODO: update this to use hyphy search
+list = flickr.photos.search(:tags => username, :per_page => '500')
+#TODO: uncomment this to use hyphy search when it launches
+#list = flickr.photos.search(:person_id => uid, :per_page => '500')
 
 #...iterate over photos and hashcount the favers
 status("Analyzing #{list.size} public photos of #{username} (#{uid})\n")
