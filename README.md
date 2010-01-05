@@ -4,6 +4,8 @@ _OoOoOoOOOhhh somebody liiiiiiiiiiiikes yoooooou!!_
 
 A quick and dirty command line tool to see what Flickr members most frequently favorite photos of you (or someone else you know!).
 
+*This is using a placeholder API method until the People in Photos API is made public.*
+
 ## Usage
 
 	Usage: wholovesyou.rb [-uqn]
@@ -14,14 +16,15 @@ A quick and dirty command line tool to see what Flickr members most frequently f
 ## Examples
 
 	$ ./wholovesyou.rb -u mroth -n 5
-	Analyzing 20 photos of mroth
-	....................
+	Analyzing 297 public photos of mroth (91842418@N00)
+	....................................................
 	TOP 5 RESULTS:
-	j.fisher 4
-	Avatara 3
-	jakerome 2
-	HennyHR 1
-	av_producer 1
+	flickrjo 22
+	mroth 14
+	.schill 11
+	lhl 10
+	Fenchurch! 8
+	
 
 ## License
 Share and enjoy!
