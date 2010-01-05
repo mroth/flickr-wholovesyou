@@ -22,3 +22,10 @@ A quick and dirty command line tool to see what Flickr members most frequently f
 	jakerome 2
 	HennyHR 1
 	av_producer 1
+
+## License
+Share and enjoy!
+
+## Author
+Matthew Rothenberg
+http://mroth.info
