@@ -34,23 +34,27 @@ def status(str)
   end
 end
 
-#the actual code!
+#the actual code begins here!
+#...lookup user
 username = Choice.choices[:user]
+
+#...get matches
 list = flickr.photos.search(:tags =>username, :per_page => '20')
+
+#...iterate over photos and hashcount the favers
 status("Analyzing #{list.size} photos of #{username}\n")
 freqs = Hash.new(0)
-
 list.each do |photo|
   status('.')
   faves = flickr.photos.getFavorites(:photo_id => photo.id)
   faves.person.each do |person|
     freqs[person.username] += 1
-  end
+  ends
 end
 freqs = freqs.sort_by {|x,y| y }
 freqs.reverse!
 
-#output results
+#...output results
 status("\nTOP #{Choice.choices[:num_results]} RESULTS:\n")
 freqs[0,Choice.choices[:num_results]].each {|word, freq| puts word+' '+freq.to_s}
 
