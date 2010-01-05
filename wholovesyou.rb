@@ -37,19 +37,27 @@ end
 #the actual code begins here!
 #...lookup user
 username = Choice.choices[:user]
+begin
+  uid = flickr.people.findByUsername(:username => username).nsid
+rescue FlickRaw::FailedResponse
+  puts "ERROR: These aren't the droids you are looking for.\
+  (No Flickr member found by that name, or they are hiding themselves from profile search.)"
+  exit 1
+end
 
 #...get matches
-list = flickr.photos.search(:tags =>username, :per_page => '20')
+list = flickr.photos.search(:tags =>username, :per_page => '10')
+#TODO: update this to use hyphy search
 
 #...iterate over photos and hashcount the favers
-status("Analyzing #{list.size} photos of #{username}\n")
+status("Analyzing #{list.size} public photos of #{username} (#{uid})\n")
 freqs = Hash.new(0)
 list.each do |photo|
   status('.')
   faves = flickr.photos.getFavorites(:photo_id => photo.id)
   faves.person.each do |person|
     freqs[person.username] += 1
-  ends
+  end
 end
 freqs = freqs.sort_by {|x,y| y }
 freqs.reverse!
