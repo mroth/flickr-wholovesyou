@@ -13,16 +13,21 @@ A quick and dirty command line tool to see what Flickr members most frequently f
 
 ## Examples
 
-	$ ./wholovesyou.rb -u mroth -n 5
-	Analyzing 297 public photos of mroth (91842418@N00)
+	$ ./wholovesyou.rb -u mroth -n 10
+	Analyzing 222 public photos of mroth (91842418@N00)
 	....................................................
-	TOP 5 RESULTS:
-	flickrjo 22
-	mroth 14
-	.schill 11
-	lhl 10
-	Fenchurch! 8
-	
+	TOP 10 RESULTS:
+	flickrjo 19
+	Avatara 10
+	jakerome 10
+	mroth 9
+	.schill 9
+	j.fisher 8
+	lhl 7
+	jeanniey 6
+	Kevin 6
+	waferbaby 5
+
 
 ## License
 Share and enjoy!
