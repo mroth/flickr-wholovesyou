@@ -2,9 +2,7 @@
 
 _OoOoOoOOOhhh somebody liiiiiiiiiiiikes yoooooou!!_
 
-A quick and dirty command line tool to see what Flickr members most frequently favorite photos of you (or someone else you know!).
-
-*This is using a placeholder API method until the People in Photos API is made public.*
+A quick and dirty command line tool to see what Flickr members most frequently favorite photos of you (or someone else you know!).  This uses the People in Photos feature (API documentation coming soon to Flickr!)
 
 ## Usage
 
