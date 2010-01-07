@@ -8,7 +8,7 @@ Choice.options do
   option :user, :required => true do
     short '-u'
     long '--user'
-    desc 'Username to search for. (required)'
+    desc 'Username, user ID or email to search for. (required)'
   end
   option :quiet do
     short '-q'
@@ -37,12 +37,26 @@ end
 #the actual code begins here!
 #...lookup user
 username = Choice.choices[:user]
-begin
-  uid = flickr.people.findByUsername(:username => username).nsid
-rescue FlickRaw::FailedResponse
-  puts "ERROR: These aren't the droids you are looking for.\
-  (No Flickr member found by that name, or they are hiding themselves from profile search.)"
-  exit 1
+if username =~ /\d+@N\d+/
+  begin
+    info = flickr.people.getInfo(:user_id => username)
+    username = info.username
+    uid = info.nsid
+
+    rescue FlickRaw::FailedResponse
+      puts "ERROR: These aren't the droids you are looking for.\
+      (No Flickr member found with that NSID.)"
+      exit 1
+  end      
+else
+  begin
+    uid = flickr.people.findByUsername(:username => username).nsid
+
+    rescue FlickRaw::FailedResponse
+      puts "ERROR: These aren't the droids you are looking for.\
+      (No Flickr member found by that name, or they are hiding themselves from profile search.)"
+      exit 1
+  end
 end
 
 #...get matches
